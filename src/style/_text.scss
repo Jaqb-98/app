@@ -1,0 +1,91 @@
+.text-capitalize {
+	text-transform: capitalize;
+}
+
+.text-underline {
+	text-decoration: underline;
+}
+.text-underline-on-hover:hover {
+	text-decoration: underline;
+}
+
+.text-uppercase {
+	text-transform: uppercase;
+}
+
+.text-italic {
+	font-style: italic;
+}
+
+.font-weight-extra-bold {
+	font-weight: 800;
+}
+.font-weight-bold {
+	font-weight: 700;
+}
+.font-weight-semibold {
+	font-weight: 600;
+}
+.font-weight-medium {
+	font-weight: 500;
+}
+
+.text-ellipsis {
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	overflow: hidden;
+}
+
+.small-text {
+	font-size: 11px;
+}
+
+.caption {
+	font-size: 12px;
+}
+
+.subtitle {
+	font-size: 16px;
+}
+
+.title {
+	font-size: 18px;
+}
+
+.font-10 {
+	font-size: 10px;
+}
+.font-13 {
+	font-size: 13px;
+}
+
+.font-24 {
+	font-size: 24px;
+}
+
+.font-normal {
+	font-size: 14px;
+	font-weight: normal;
+	text-transform: none;
+}
+
+.text-no-wrap {
+	white-space: nowrap;
+}
+
+.white-space-pre-wrap {
+	white-space: pre-wrap
+}
+
+.word-break-all {
+	word-break: break-all;
+}
+.word-break-word {
+	word-break: break-word;
+}
+
+.append-comma:not(:last-child) {
+	&::after {
+		content: ", ";
+	}
+}

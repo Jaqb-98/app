@@ -1,0 +1,85 @@
+html {
+	overflow-y: hidden;
+	box-sizing: border-box;
+}
+
+body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+	font-size: 14px;
+	background: white;
+	padding: 0;
+	margin: 0;
+	direction: ltr;
+}
+
+* {
+	box-sizing: inherit;
+}
+
+hr {
+	border-color: rgba(0,0,0,0.12);
+	border-bottom: none;
+	width: 100%;
+}
+
+th, td {
+	text-align: left;
+	padding: 8px;
+}
+th {
+	font-weight: 600;
+}
+
+ul {
+	list-style: none;
+	margin-block-start: 4px;
+}
+
+a {
+	text-decoration: none;
+	color: #130700;
+	&:hover {
+		text-decoration: underline;
+	}
+}
+
+.icon {
+	user-select: none;
+}
+
+.hover-background::before {
+	content: '';
+	background-color: currentColor;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	transition: 0.3s;
+	opacity: 0;
+}
+
+
+.hover-background:hover::before {
+	opacity: 0.12;
+}
+
+.input-loader {
+	height: 24px;
+}
+
+.main-column {
+	font-weight: bold;
+}
+
+@media print {
+	::-webkit-scrollbar {
+		display: none;
+	}
+	.no-print, .avatar {
+		display: none !important;
+	}
+	.print-page-break-avoid {
+		page-break-inside: avoid;
+	}
+}

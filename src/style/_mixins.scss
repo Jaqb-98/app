@@ -1,0 +1,139 @@
+@function opposite-direction($direction) {
+	@if $direction == top {
+		@return bottom;
+	} @else if $direction == bottom {
+		@return top;
+	} @else if $direction == left {
+		@return right;
+	} @else if $direction == right {
+		@return left;
+	} @else {
+		@error "unknown direction #{$direction}";
+	}
+}
+
+@mixin arrow-base($direction, $color, $arrow-size: 7px) {
+	> .arrow {
+		$opposite: opposite-direction($direction);
+		border-#{$direction}-color: $color; 
+		#{$opposite}: calc(#{$arrow-size} * -2);
+	}
+}
+
+
+@mixin arrow-position($color, $borderColor, $className, $arrowSize) {
+
+
+	.#{$className} {
+		&[data-popper-placement^="bottom"] {
+			.arrow {
+				top: calc(#{$arrowSize} * -2);
+				border: $arrowSize solid transparent;
+				border-bottom-color: $borderColor;
+			}
+
+			.arrow:before {
+				content: "";
+				position: absolute;
+				top: calc(#{$arrowSize} * -1) ;
+				right: calc(#{$arrowSize / 2} * -2);
+				border: $arrowSize solid transparent;
+				border-bottom-color: $color;
+			  }
+		}
+	
+		&[data-popper-placement^="top"] {
+			 .arrow {
+				bottom: calc(#{$arrowSize} * -2);
+				border: $arrowSize solid transparent;
+				border-top-color: $borderColor;
+			}
+
+			.arrow:before {
+				content: "";
+				position: absolute;
+				top: calc(#{$arrowSize} * -1) ;
+				right: calc(#{$arrowSize / 2} * -2);
+				border: $arrowSize solid transparent;
+				border-top-color: $color;
+			  }
+		}
+	}
+
+
+	.rtl, .ltr {
+		.#{$className} {
+			&[data-popper-placement^="left"] {
+				.arrow {
+					right: calc(#{$arrowSize} * -2);
+					border: $arrowSize solid transparent;
+					border-left-color: $borderColor;
+				}
+
+				.arrow:before {
+					content: "";
+					position: absolute;
+					top: calc(#{$arrowSize} * -1) ;
+					right: calc(#{$arrowSize / 2} * -2);
+					border: $arrowSize solid transparent;
+					border-left-color: $color;
+				  }
+			}
+	
+			&[data-popper-placement^="right"] {
+				.arrow {
+					left: calc(#{$arrowSize} * -2);
+					border: $arrowSize solid transparent;
+					border-right-color: $borderColor;
+				}
+
+				.arrow:before {
+					content: "";
+					position: absolute;
+					top: calc(#{$arrowSize} * -1) ;
+					left: calc(#{$arrowSize / 2} * -2);
+					border: $arrowSize solid transparent;
+					border-right-color: $color;
+				  }
+			}
+		}
+	}
+}
+
+@mixin popper-arrow($color, $borderColor, $className, $arrowSize: 7px) {
+
+
+	.#{$className} .arrow {
+		border-style: solid;
+		position: absolute;
+	}
+
+	@include arrow-position($color, $borderColor, $className, $arrowSize)
+
+}
+
+@function strip-alpha($color, $background: #FFF) {
+	$percent: alpha($color) * 100%;
+	$opaque: opacify($color, 1);
+	$solid-color: mix($opaque, $background, $percent);
+	@return $solid-color;
+}
+
+@mixin slide-fade-transition($moveY: 10px, $duration: 0.3s) {
+	.slide-fade-enter-active,
+	.slide-fade-leave-active {
+		transition: all $duration ease;
+	}
+	.slide-fade-enter,
+	.slide-fade-leave-to {
+		transform: translateY($moveY);
+		opacity: 0;
+	}
+}
+
+@mixin square($size) {
+	width: $size;
+	min-width: $size;
+	height: $size;
+	min-height: $size;
+}
