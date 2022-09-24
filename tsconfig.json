@@ -1,42 +1,41 @@
 {
-  "compilerOptions": {
-    "target": "esnext",
-    "module": "esnext",
-    "strict": true,
-    "jsx": "preserve",
-    "moduleResolution": "node",
-    "skipLibCheck": true,
-    "esModuleInterop": true,
-    "allowSyntheticDefaultImports": true,
-    "forceConsistentCasingInFileNames": true,
-    "useDefineForClassFields": true,
-    "sourceMap": true,
-    "baseUrl": ".",
-    "types": [
-      "webpack-env",
-      "mocha",
-      "chai"
-    ],
-    "paths": {
-      "@/*": [
-        "src/*"
-      ]
-    },
-    "lib": [
-      "esnext",
-      "dom",
-      "dom.iterable",
-      "scripthost"
-    ]
-  },
-  "include": [
-    "src/**/*.ts",
-    "src/**/*.tsx",
-    "src/**/*.vue",
-    "tests/**/*.ts",
-    "tests/**/*.tsx"
-  ],
-  "exclude": [
-    "node_modules"
-  ]
+	"include": [
+		"./src/**/*",
+	],
+	"exclude": [
+		"../landax-php/Landax.Web/dist/**/*"
+	],
+	"compilerOptions": {
+		"lib": [
+			"dom",
+			"es5",
+			"es2015",
+			"es2017.object",
+			"es2016.array.include",
+			"esnext.array",
+			"es7",
+			"es2018.promise",
+			"es2019",
+			"ES2020.String",
+		],
+		"allowJs": true,
+		"module": "esnext",
+		"moduleResolution": "node",
+		"target": "es5",
+		"jsx": "react",
+		"jsxFactory": "h",
+		"sourceMap": true,
+		"allowSyntheticDefaultImports": true,
+		"baseUrl": "./",
+		"newLine": "LF",
+		"noUnusedLocals": true,
+		"paths": {
+			"landax/*": [
+				"./src/*"
+			],
+			"assets/*": [
+				"./assets/*"
+			],
+		},
+	}
 }
