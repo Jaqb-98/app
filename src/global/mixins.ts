@@ -1,3 +1,4 @@
+import { Auth } from 'firebase/auth'
 import { globalStore } from '../store'
 
 let uid = 0
@@ -10,8 +11,8 @@ const computed = {
 	$globalStore() {
 		return globalStore
 	},
-	
-	auth() {
+
+	auth(): Auth {
 		return this.$globalStore.state.currentUser.auth || {}
 	},
 }

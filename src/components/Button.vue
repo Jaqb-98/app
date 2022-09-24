@@ -1,11 +1,15 @@
 <template>
-	<button
+	<component
+		:is="to && !disabled ? 'router-link' : 'button'"
+		:type="type"
+		:to="computedTo"
 		:disabled="disabled"
+		class="base-button"
 		:class="`background-${color}`"
 		v-on="$listeners"
 	>
 		<slot />
-	</button>
+	</component>
 </template>
 
 <script lang="ts">
@@ -15,12 +19,20 @@ export default Vue.extend({
 	props: {
 		color: { type: String, required: true },
 		disabled: { type: Boolean, default: false },
+		to: { type: undefined, default: null },
+		type: { type: String, default: 'button' },
+
 	},
+	computed: {
+		computedTo() {
+			return this.disabled ? '' : this.to
+		},
+	}
 })
 </script>
 
 <style lang="scss" scoped>
-button {
+.base-button {
 	cursor: pointer;
 	margin: 6px 8px;
 	outline: 0;

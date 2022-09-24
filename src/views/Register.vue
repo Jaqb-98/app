@@ -1,11 +1,7 @@
 <template>
 	<div class="panel">
 		<div class="title">Register</div>
-		<Form
-			:value="formData"
-			:disabled="false"
-			@input="updateFormData"
-		>
+		<Form :value="formData" :disabled="false" @input="updateFormData">
 			<Input inputType="email" label="Email" key="email" />
 			<Input inputType="password" label="Password" key="password" />
 			<Button color="primary" @click="register"> Register </Button>
@@ -15,16 +11,13 @@
 
 <script lang="ts">
 import Vue from 'vue'
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth"
+import { createUserWithEmailAndPassword } from "firebase/auth"
 
 export default Vue.extend({
 	data() {
 		return {
 			formData: {},
 		}
-	},
-	created() {
-		this.auth = getAuth()
 	},
 	methods: {
 		updateFormData(newFormData) {
@@ -33,8 +26,7 @@ export default Vue.extend({
 		register() {
 			createUserWithEmailAndPassword(this.auth, this.formData.email, this.formData.password)
 				.then((credentials) => {
-					this.credentials = credentials
-					console.log(credentials)
+					this.$globalStore.dispatch(`currentUser/getAuth`)
 					this.$router.push('/')
 				}).catch(error => {
 					console.log(error.code)

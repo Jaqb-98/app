@@ -1,7 +1,7 @@
 <template>
 	<div class="panel">
 		<div class="title">Sign In</div>
-		<Form :value="formData" :disabled="false" @input="updateFormData">
+		<Form :value="formData" @input="updateFormData">
 			<Input inputType="email" label="Email" key="email" />
 			<Input inputType="password" label="Password" key="password" />
 			<Button color="primary" @click="signIn"> Sign in </Button>

@@ -1,6 +1,9 @@
 <template>
 	<div id="app">
 		<NavBar />
+		<div class="content">
+			<router-view />
+		</div>
 	</div>
 </template>
 
@@ -35,5 +38,10 @@ nav {
 			color: #42b983;
 		}
 	}
+}
+
+.content {
+	width: 100vw;
+	height: 100vh;
 }
 </style>
