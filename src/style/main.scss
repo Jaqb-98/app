@@ -1,0 +1,23 @@
+@charset "UTF-8";
+
+@import 'variables';
+
+@import 'spacing';
+@import 'helpers';
+@import 'text';
+@import 'components';
+
+@import 'global';
+
+@each $color, $value in $colors {
+	.color-#{$color} {
+		color: $value;
+	}
+
+	.background-#{$color} {
+		background: $value;
+	}
+	.border-#{$color} {
+		border-color: $value;
+	}
+}

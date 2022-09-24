@@ -2,9 +2,6 @@
 	"include": [
 		"./src/**/*",
 	],
-	"exclude": [
-		"../landax-php/Landax.Web/dist/**/*"
-	],
 	"compilerOptions": {
 		"lib": [
 			"dom",
@@ -30,7 +27,7 @@
 		"newLine": "LF",
 		"noUnusedLocals": true,
 		"paths": {
-			"landax/*": [
+			"app/*": [
 				"./src/*"
 			],
 			"assets/*": [
